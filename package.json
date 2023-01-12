@@ -1,58 +1,32 @@
 {
-  "_args": [
-    [
-      "@scarybeasties/phaser2-spine-ts@github:scarybeasties/phaser2-spine-ts",
-      "/Users/jon/Documents/ScaryBeasties/GitHub/Disney/Cars/HiddenObject"
-    ]
+  "name": "@azerion/phaser-spine",
+  "author": "Azerion",
+  "version": "4.0.0",
+  "description": "Spine plugin for Phaser.io!",
+  "contributors": [
+    {
+      "name": "Ale Bles",
+      "email": "a.bles@azerion.com"
+    }
   ],
-  "_from": "scarybeasties/phaser2-spine-ts",
-  "_id": "@ascarybeasties/phaser2-spine-ts",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/@scarybeasties/phaser2-spine-ts",
-  "_phantomChildren": {},
-  "_requested": {
-    "hosted": {
-      "directUrl": "https://raw.githubusercontent.com/scarybeasties/phaser2-spine-ts/master/package.json",
-      "gitUrl": "git://github.com/scarybeasties/phaser2-spine-ts.git",
-      "httpsUrl": "git+https://github.com/scarybeasties/phaser2-spine-ts.git",
-      "shortcut": "github:scarybeasties/phaser2-spine-ts",
-      "ssh": "git@github.com:scarybeasties/phaser2-spine-ts.git",
-      "sshUrl": "git+ssh://git@github.com/scarybeasties/phaser2-spine-ts.git",
-      "type": "github"
-    },
-    "name": "@scarybeasties/phaser2-spine-ts",
-    "raw": "@scarybeasties/phaser2-spine-ts@github:scarybeasties/phaser2-spine-ts",
-    "rawSpec": "github:scarybeasties/phaser2-spine-ts",
-    "scope": "@azerion",
-    "spec": "github:scarybeasties/phaser2-spine-ts",
-    "type": "hosted"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:scarybeasties/phaser2-spine-ts.git"
   },
-  "_requiredBy": [
-    "#DEV:/"
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.githubusercontent.com/azerion/phaser-spine/master/LICENSE"
+    }
   ],
-  "_resolved": "git://github.com/scarybeasties/phaser2-spine-ts.git#37c41fe880aae0d2721301dbd95a5ed73364143a",
-  "_shasum": "b2eb7c413c8a4145cf317b00046ca351766d3066",
-  "_shrinkwrap": null,
-  "_spec": "@scarybeasties/phaser2-spine-ts@github:scarybeasties/phaser2-spine-ts",
-  "_where": "/Users/jon/Documents/ScaryBeasties/GitHub/Disney/Cars/HiddenObject",
-  "author": {
-    "name": "Azerion"
-  },
-  "bugs": {
-    "url": "https://github.com/scarybeasties/phaser2-spine-ts/issues"
-  },
+  "bugs": [
+    {
+      "url": "https://github.com/scarybeasties/phaser2-spine-ts/issues"
+    }
+  ],
   "config": {
     "name": "phaser-spine"
   },
-  "contributors": [
-    {
-      "email": "a.bles@azerion.com",
-      "name": "Ale Bles"
-    }
-  ],
-  "dependencies": {},
-  "description": "Spine plugin for Phaser.io!",
   "devDependencies": {
     "grunt": "1.0.x",
     "grunt-banner": "^0.6.0",
@@ -65,22 +39,5 @@
     "phaser": "2.6.2",
     "typescript": "2.1.x"
   },
-  "gitHead": "37c41fe880aae0d2721301dbd95a5ed73364143a",
-  "homepage": "https://github.com/scarybeasties/phaser2-spine-ts#readme",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.githubusercontent.com/scarybeasties/phaser2-spine-ts/master/LICENSE"
-    }
-  ],
-  "name": "@scarybeasties/phaser2-spine-ts",
-  "optionalDependencies": {},
-  "readme": "Phaser Spine\n============\n\nSpine plugin for Phaser, it works, somehow.. No? Submit an issue, otherwise have fun :)\n\nKey features:\n\n* Spine for Phaser! :o\n* Skin support\n* Possible to combine skins\n* Mixes and fading animations\n* Support for scaled atlases\n\nSpine Version\n-------------\nPlease note that the current spine version is an older version, and as a result of that it will work best with **Spine version 3.2**.\nThere is a newer version of spine available (Spine-ts, up-to-date with latest spine runtime) but work on that is currently halted for this library.\n\nIf you feel like helping out, you're welcome to clone the [spine-ts](https://github.com/scarybeasties/phaser2-spine-ts/tree/spine-ts) branch of this library.\n\nGetting Started\n---------------\nFirst you want to get a fresh copy of the plugin. You can get it from this repo or from npm, ain't that handy.\n```\nnpm install @scarybeasties/phaser2-spine-ts --save-dev\n```\n\nNext up you'd want to add it to your list of js sources you load into your game\n```html\n<script src=\"path/to/phaser-spine.min.js\"></script>\n```\n\nAfter adding the script to the page you can activate it by enabling the plugin:\n```javascript\ngame.add.plugin(PhaserSpine.SpinePlugin);\n```\n\n\nUsage\n-----\nLike any other asset in Phaser, you need to preload the spine object you want in your game. A spine Javascript export will deliver you three files; *.atlas, *.json and *.png.\nThe preloader expects these to be in the same folder, and when so you can just preload the json file by adding the following code to your game:\n\n```javascript\ngame.load.spine(\n    'buddy',                        //The key used for Phaser's cache\n    'assets/buddy_skeleton.json'    //The location of the spine's json file\n    );\n```\n\nNow you can just add the spine animation to your game:\n```javascript\nbuddy = game.add.spine(\n    400,        //X positon\n    300,        //Y position\n    'buddy'     //the key of the object in cache\n);\n```\n\n### Playing animations\nPhaser-spine uses the same API as the original runtime for playing an animation, after adding the spine object to your game, you can call the following function on your object:\n```javascript\nbuddy.setAnimationByName(\n    0,          //Track index\n    \"idle\",     //Animation's name\n    true        //If the animation should loop or not\n);\n```\n\n### Handling events\nYou can handle Spine events, just add your callback to Spine.onEvent, it's regular [Phaser.Signal](https://phaser.io/docs/2.6.2/Phaser.Signal.html) object. Your callback should be defined with two arguments: event index (number) and event object (Spine.Event):\n\n```javascript\nspineboy.onEvent.add(function (i,e) {\n    console.log('name=' + e.data.name + ' int=' + e.intValue + ' float=' + e.floatValue + ' string=' + e.stringValue);\n}\n```\n\n\n### Crossfading animations\nStacking animations in spine is rather simple, you just add non-looping animations on top of eachother:\n```javascript\nspineboy.setAnimationByName(0, \"jump\", false);  //We'd like to show this animation once\nspineboy.addAnimationByName(0, \"walk\", true);   //And after the previous animations is finished, we continue with this one\n```\n\nNow this will just simply chain the animation, and it will look a bit akward. Spine solves this by adding mixes that tell spine how to transition nicely from one animation to another.\nYou can set mixes in phaser spine as well by doing the following:\n```javascript\nspineboy.setMixByName(\"walk\", \"jump\", 0.2); //transition from walk to jump and fade/blend it over a period of 0.2 seconds\nspineboy.setMixByName(\"jump\", \"walk\", 0.4); //transition from jump to walk and fade/blend it over a period of 0.4 seconds\n```\n\n### Switching skins\nAnother great additions to spine is the support of skins and the ability to freely switch between them. Like animations this is simple and we use the same API as the runtime.\nDon't forget to call setToSetupPose after switching skins to update all attachments correctly.\n```javascript\nbuddy.setSkinByName('outfit01');\nbuddy.setToSetupPose();\n```\n\n### Combining skins\nNow the last final awesome part is that you can also create skins in code yourself by simply grouping other existing skins.\n```javascript\nvar newSkin = buddy.createCombinedSkin(\n    'outfit02',     //The name of the new skin, will be automaticly added to the skeleton data\n    'vest',         //One of the skins we want to combine\n    'mask'          //The other skin we want to combine\n);\n\n//Setting the new skin can be set with:\nbuddy.setSkin(newSkin);\n//Or by referencing the new name\nbuddy.setSkinByName(outfit02);\n\n//And then we shouldn't forget to setToSetupPose ;)\nbuddy.setToSetupPose();\n```\n\n### Scaled atlases\nIn Spine it's possible to define different scales for your export atlases, including a special suffix that will be suffixed to each atlas name. By default this plugin assumes that no scale is configured, ergo everything is set with scale=1.\nIf you export your atlases to a smaller scale, than this will only happen to the images, the original bone structure will still be defined at the original size you defined in your spine project.\n\nIf the exported image is scaled up (or down), than this has to be inverted by the runtime in order to have the correct size of the images for the attachments. In order to do do this correctly, the suffix for a scale any other than 1 has to be set.\nBy default this plugin parses the suffix with a regular expression that looks for numbers start with @ and ending by x. So an atlas file with a scale of 0.5 should have a suffix of @0.5x and the resultion file name would be spineBoy@0.5x.atlas.\n\nIf you'd like a different setup you can do so by supplying a new RegExp object to the follow property:\n```javascript\nPhaserSpine.SpinePlugin.RESOLUTION_REGEXP = /#(.+)r/;\n```\nNow the Spine plugin will look for suffixes that look like: #0.5r\n\nThe next step is to tell the preloader which scaling variants are available for loading, by adding them as an array in the 3rd optional parameter:\n```javascript\ngame.load.spine('shooter', \"shooter.json\", ['@0.7x', '@0.5x']);\n```\nThe preloader will load 1 json (with all the skeleton/animation data), and 2 images and 2 atlas files.\n\nLater in your game, when you create a new spine object, you again need to add the scaling variant you would like to have for your game. This way you can conditionally load different assets.\nIf you pass no scaling variant to the object, it will just get the first variant from the array supplied when you preload the spine object.\n```javascript\nshooter = game.add.spine(400, 300, \"shooter\", '@0.7x');\n//the above is equal to:\nshooter = game.add.spine(400, 300, \"shooter\");\n//because @0.7x is the first element of the array supplied to the preloader\n```\n\n\nTodo\n----\n - adding a body for physics\n - Handling input\n\nCredits\n-------\nCredit due, where credit's due as my mom always said. This version of phaser-spine is based on the original work by [Studio krok's PhaserSpine](https://github.com/StudioKrok/PhaserSpine)\n\nDisclaimer\n----------\nWe at Azerion just love playing and creating\nawesome games. We aren't affiliated with Phaser.io and/or esotericsoftware. We just needed some awesome spine animations in our awesome HTML5 games. Feel free to use it for enhancing your own awesome games!\n\nPhaser Spine is distributed under the MIT license. All 3rd party libraries and components are distributed under their\nrespective license terms.\n",
-  "readmeFilename": "README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/scarybeasties/phaser2-spine-ts.git"
-  },
-  "typings": "./config/typings.json",
-  "version": "3.0.10"
+  "typings": "./config/typings.json"
 }
